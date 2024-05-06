@@ -8,8 +8,8 @@ import { BASE_URL, createSign } from '../services/auth.service';
 const signUpData = localStorage.getItem('signupData');
 const parseSignUp = JSON.parse(signUpData);
 
-const key = parseSignUp.key;
-const secret = parseSignUp.secret;
+const key = parseSignUp?.key;
+const secret = parseSignUp?.secret;
 
 const BasicCard = () => {
 	const [books, setBooks] = useState([]);
@@ -97,23 +97,29 @@ const BasicCard = () => {
 	return (
 		<Container sx={{ mt: 6 }}>
 			<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-				{books.map((book, index) => (
-					<Card sx={{ width: 300, flex: '1 1 auto', maxWidth: '100%' }} key={index}>
-						<Box sx={{ p: 2 }}>
-							<h3>{book.book.title}</h3>
-							<p>Pages: {book.book.pages}</p>
-							<p>Cover: {book.book.cover}</p>
-							<p>Published: {book.book.published}</p>
-							<p>Isbn: {book.book.isbn}</p>
-							<Box sx={{ display: 'flex', mt: 4, justifyContent: 'space-between' }}>
-								<p>{book.book.author}</p>
-								<Button variant='contained' color='error' onClick={() => deleteBook(book.book.id)}>
-									Delete
-								</Button>
+				{books &&
+					books.length &&
+					books.map((book, index) => (
+						<Card sx={{ width: 300, flex: '1 1 auto', maxWidth: '100%' }} key={index}>
+							<Box sx={{ p: 2 }}>
+								<h3>{book.book.title}</h3>
+								<p>Pages: {book.book.pages}</p>
+								<p>Cover: {book.book.cover}</p>
+								<p>Published: {book.book.published}</p>
+								<p>Isbn: {book.book.isbn}</p>
+								<Box sx={{ display: 'flex', mt: 4, justifyContent: 'space-between' }}>
+									<p>{book.book.author}</p>
+									<Button
+										variant='contained'
+										color='error'
+										onClick={() => deleteBook(book.book.id)}
+									>
+										Delete
+									</Button>
+								</Box>
 							</Box>
-						</Box>
-					</Card>
-				))}
+						</Card>
+					))}
 			</Box>
 		</Container>
 	);

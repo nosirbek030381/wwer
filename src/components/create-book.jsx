@@ -6,8 +6,8 @@ import { BASE_URL, createSign } from '../services/auth.service';
 const signUpData = localStorage.getItem('signupData');
 const parseSignUp = JSON.parse(signUpData);
 
-const key = parseSignUp.key;
-const secret = parseSignUp.secret;
+const key = parseSignUp?.key;
+const secret = parseSignUp?.secret;
 
 const CreateBook = () => {
 	const [isbn, setIsbn] = useState('');

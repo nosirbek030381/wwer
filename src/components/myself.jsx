@@ -1,15 +1,15 @@
 import { ArrowBack } from '@mui/icons-material';
 import { Container, Typography } from '@mui/material';
 import cryptoJS from 'crypto-js';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const BASE_URL = 'https://no23.lavina.tech';
 const signUpData = localStorage.getItem('signupData');
 const parseSignUp = JSON.parse(signUpData);
 
-const key = parseSignUp.key;
-const secret = parseSignUp.secret;
+const key = parseSignUp?.key;
+const secret = parseSignUp?.secret;
 
 const createSign = (method, url, body, userSecret) => {
 	return cryptoJS.MD5(`${method}${url}${body}${userSecret}`).toString();

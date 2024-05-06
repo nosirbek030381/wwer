@@ -4,8 +4,8 @@ export const BASE_URL = 'https://no23.lavina.tech';
 const signUpData = localStorage.getItem('signupData');
 const parseSignUp = JSON.parse(signUpData);
 
-const key = parseSignUp.key;
-const secret = parseSignUp.secret;
+const key = parseSignUp?.key;
+const secret = parseSignUp?.secret;
 
 // // sign up
 // const signUp = async () => {

@@ -1,11 +1,16 @@
 import { Box } from '@mui/material';
-import { Home, Navbar } from './components';
+import { Route, Routes } from 'react-router-dom';
+import { Home, Myself, Navbar, SignUp } from './components';
 
 const App = () => {
 	return (
 		<Box>
 			<Navbar />
-			<Home />
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='/signup' element={<SignUp />} />
+				<Route path='/myself' element={<Myself />} />
+			</Routes>
 		</Box>
 	);
 };
